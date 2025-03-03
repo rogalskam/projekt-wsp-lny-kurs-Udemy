@@ -1,0 +1,13 @@
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\entity\UserRegisterDTO.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\configuration\CustomUserDetails.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\entity\Code.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\configuration\CustomUserDetailsService.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\services\JwtService.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\configuration\UserConfiguration.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\entity\Role.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\repository\UserRepository.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\services\UserService.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\AuthApplication.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\entity\User.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\entity\AuthResponse.java
+C:\NAUKA JAVA\PROJEKT WSPÓLNY\projektwspolny\auth\src\main\java\com\example\auth\fasada\AuthController.java
