@@ -1,14 +1,13 @@
 package com.example.auth.entity;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Setter
 @Table(name = "users")
@@ -16,23 +15,22 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "users_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_is_seq", allocationSize = 1)
+    @SequenceGenerator(name = "users_id_seq",sequenceName = "users_id_seq",allocationSize = 1)
     private long id;
     private String uuid;
     private String login;
     private String email;
-    private  String password;
+    private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @Column(name = "isLock")
+    @Column(name = "islock")
     private boolean isLock;
-    @Column(name = "isEnabled")
+    @Column(name = "isenabled")
     private boolean isEnabled;
 
-    public User() {
-//        generateUuid();
+    public User(){
+        generateUuid();
     }
-
     public User(long id, String uuid, String login, String email, String password, Role role, boolean isLock, boolean isEnabled) {
         this.id = id;
         this.uuid = uuid;
@@ -42,10 +40,17 @@ public class User implements UserDetails {
         this.role = role;
         this.isLock = isLock;
         this.isEnabled = isEnabled;
-
         generateUuid();
     }
-
+    public Role getRole(){
+        return this.role;
+    }
+    private long getId(){
+        return id;
+    }
+    public String getEmail() {
+        return email;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -80,12 +85,9 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
-
     private void generateUuid(){
         if (uuid == null || uuid.equals("")){
-//            setUuid(UUID.randomUUID().toString());
-            System.out.println("uuid = " + uuid);
+            setUuid(UUID.randomUUID().toString());
         }
     }
-
 }

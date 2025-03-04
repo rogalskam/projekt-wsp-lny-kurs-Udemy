@@ -1,5 +1,6 @@
 package com.example.auth.services;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -15,34 +16,46 @@ import java.util.Map;
 @Component
 public class JwtService {
     public final String SECRET;
-    public final int  exp;
 
-    public JwtService(@Value("${jwt.secret}") String secret, @Value("${jwt.exp}") int exp) {
+    public JwtService(@Value("${jwt.secret}") String secret) {
         SECRET = secret;
-        this.exp = exp;
     }
 
-    public void validateToken(final String token) {
+    public void validateToken(final String token) throws ExpiredJwtException, IllegalArgumentException {
         Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJwt(token);
     }
 
     private Key getSignKey() {
-        byte[] keyBytes = Decoders.BASE64URL.decode(SECRET);
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String username, int exp) {
         Map<String, Object> clames = new HashMap<>();
-        return createToken(clames, username);
+        return createToken(clames, username, exp);
     }
 
-    private String createToken(Map<String, Object> clames, String username) {
+    private String createToken(Map<String, Object> clames, String username, int exp) {
         return Jwts.builder()
                 .setClaims(clames)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + exp))
-                .signWith(getSignKey(), SignatureAlgorithm.HS256)
-                .compact();
+                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
+
+    private String getSubject(final String token){
+        return Jwts
+                .parser()
+                .setSigningKey(SECRET)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public String refreshToken(final String token, int exp){
+        String username = getSubject(token);
+        return generateToken(username,exp);
+    }
+
 }

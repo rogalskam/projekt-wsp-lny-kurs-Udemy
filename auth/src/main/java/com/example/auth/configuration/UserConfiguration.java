@@ -30,15 +30,14 @@ public class UserConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/regigster").permitAll()
+                .requestMatchers("/api/v1/auth/regigster","/api/v1/auth/login","/api/v1/auth/validate").permitAll()
                 .and()
                 .build();
     }
 
-
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder(){
+        return  new BCryptPasswordEncoder();
     }
 
     @Bean

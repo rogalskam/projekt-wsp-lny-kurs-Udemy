@@ -1,7 +1,7 @@
 package com.example.auth.configuration;
 
+import com.example.auth.entity.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
