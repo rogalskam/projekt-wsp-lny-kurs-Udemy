@@ -48,6 +48,11 @@ public class User implements UserDetails {
     private long getId(){
         return id;
     }
+
+    public String getUuid(){
+        return uuid;
+    }
+
     public String getEmail() {
         return email;
     }
