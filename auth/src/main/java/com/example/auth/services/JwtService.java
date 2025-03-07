@@ -22,7 +22,7 @@ public class JwtService {
     }
 
     public void validateToken(final String token) throws ExpiredJwtException, IllegalArgumentException {
-        Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJwt(token);
+        Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
     }
 
     private Key getSignKey() {

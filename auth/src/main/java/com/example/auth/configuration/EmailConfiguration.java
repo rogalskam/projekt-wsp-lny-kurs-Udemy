@@ -4,12 +4,14 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import jakarta.mail.*;
 import java.util.Properties;
 
 @Configuration
+@Slf4j
 public class EmailConfiguration {
     private final String email;
     private final String password;

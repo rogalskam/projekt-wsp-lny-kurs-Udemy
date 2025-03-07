@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
 		<spring-cloud.version>2022.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
@@ -72,6 +73,19 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<scope>annotationProcessor</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.example</groupId>
+			<artifactId>RegisterEndpointInformation</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>management-products</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
@@ -97,6 +111,8 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+							<proc>full</proc>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
@@ -109,6 +125,8 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+							<proc>full</proc>
 						</exclude>
 					</excludes>
 				</configuration>
